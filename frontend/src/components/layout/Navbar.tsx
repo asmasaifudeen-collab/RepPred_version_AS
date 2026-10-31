@@ -161,23 +161,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             Interpretability
           </button>
-
-          <button
-            onClick={() => onTabChange('data')}
-            style={{
-              padding: '8px 14px',
-              borderRadius: '4px',
-              fontSize: '0.875rem',
-              fontWeight: 700,
-              background: activeTab === 'data' ? (presentationMode ? '#2A2925' : '#11110F') : 'transparent',
-              color: activeTab === 'data' ? '#D8FF4F' : (presentationMode ? '#a3a199' : '#52504a'),
-              border: activeTab === 'data' ? '1px solid #11110F' : '1px solid transparent',
-              cursor: 'pointer',
-              transition: 'all 0.15s ease'
-            }}
-          >
-            Data
-          </button>
         </nav>
 
         {/* Right Controls */}
@@ -207,7 +190,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="btn-arch-black"
             style={{ padding: '8px 16px', fontSize: '0.825rem' }}
           >
-            Explore a Mutation <ArrowRight size={14} />
+            Explore Data <ArrowRight size={14} />
           </button>
         </div>
       </div>

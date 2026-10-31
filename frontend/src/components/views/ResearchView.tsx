@@ -505,16 +505,13 @@ export const ResearchView: React.FC<ResearchViewProps> = ({
         <h3 style={{ fontSize: '1.2rem', fontWeight: 800, marginBottom: '16px' }}>What do you want to explore next?</h3>
         <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap' }}>
           <button onClick={() => onNavigate('explore')} className="btn-arch-black">
-            Explore a Mutation
+            Explore Data &amp; Mutations
           </button>
           <button onClick={() => onNavigate('benchmark')} className="btn-arch-white">
-            View Leaderboard
+            Benchmark Leaderboard
           </button>
           <button onClick={() => onNavigate('interpretability')} className="btn-arch-white">
             Feature Importance
-          </button>
-          <button onClick={() => onNavigate('data')} className="btn-arch-white">
-            Data Provenance
           </button>
         </div>
       </section>

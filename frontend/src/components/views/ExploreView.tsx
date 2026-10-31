@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { MutationItem, FeatureImportanceItem } from '../../types/benchmark';
 import { PdbStructureViewer3D } from '../structure/PdbStructureViewer3D';
 import { SequencePanel, ESMPanel, StructurePanel, ContactMapPanel, GNNPanel } from '../representations/RepresentationPanels';
+import { DataView } from './DataView';
 import { Dna, Cpu, Box, Share2, Sparkles, Info, CheckCircle2, AlertTriangle, Layers, Eye } from 'lucide-react';
 
 interface ExploreViewProps {
@@ -78,18 +79,66 @@ export const ExploreView: React.FC<ExploreViewProps> = ({
 
   return (
     <div style={{ maxWidth: '1400px', margin: '0 auto', color: '#11110F' }}>
-      {/* Page Header */}
-      <div style={{ marginBottom: '32px' }}>
-        <div style={{ fontSize: '0.75rem', fontWeight: 800, color: '#11110F', background: '#D8FF4F', display: 'inline-block', padding: '2px 8px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '8px', fontFamily: 'monospace' }}>
-          MUTATION EXPLORER
+      {/* 1. DATA FOUNDATION & PROVENANCE SECTION */}
+      <section id="section-data-provenance" style={{ marginBottom: '48px' }}>
+        <DataView embedded={true} />
+      </section>
+
+      {/* STAGE TRANSITION BANNER */}
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: '16px',
+          margin: '0 0 36px 0',
+          padding: '16px 20px',
+          background: '#ECEAE4',
+          border: '1px solid #11110F',
+          borderRadius: '6px',
+          boxShadow: '2px 2px 0px #11110F'
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <span
+            style={{
+              background: '#11110F',
+              color: '#D8FF4F',
+              padding: '4px 10px',
+              borderRadius: '4px',
+              fontFamily: 'monospace',
+              fontWeight: 800,
+              fontSize: '0.75rem',
+              textTransform: 'uppercase',
+              letterSpacing: '0.06em',
+              whiteSpace: 'nowrap'
+            }}
+          >
+            STAGE 2 &bull; DEEP-DIVE
+          </span>
+          <span style={{ fontSize: '0.9rem', fontWeight: 800, color: '#11110F' }}>
+            Interactive Mutation &amp; Structure Explorer
+          </span>
         </div>
-        <h1 style={{ fontSize: '2.4rem', fontWeight: 900, letterSpacing: '-0.03em', margin: '0 0 8px 0', color: '#11110F' }}>
-          Explore a Mutation
-        </h1>
-        <p style={{ fontSize: '1.05rem', color: '#52504a', margin: 0 }}>
-          Follow an authentic FireProt mutation across five distinct protein representation paradigms.
-        </p>
+        <div style={{ fontSize: '0.8rem', color: '#52504a', fontWeight: 600 }}>
+          Inspect authentic WT PDBs, representation vectors, and stability predictions for individual mutations &rarr;
+        </div>
       </div>
+
+      {/* 2. INTERACTIVE MUTATION & STRUCTURE EXPLORER SECTION */}
+      <section id="section-mutation-explorer">
+        <div style={{ marginBottom: '24px' }}>
+          <div style={{ fontSize: '0.75rem', fontWeight: 800, color: '#11110F', background: '#D8FF4F', display: 'inline-block', padding: '2px 8px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '8px', fontFamily: 'monospace' }}>
+            MUTATION-LEVEL PROBING
+          </div>
+          <h2 style={{ fontSize: '1.85rem', fontWeight: 900, letterSpacing: '-0.03em', margin: '0 0 8px 0', color: '#11110F' }}>
+            Follow a Mutation Across Representations
+          </h2>
+          <p style={{ fontSize: '0.95rem', color: '#52504a', margin: 0 }}>
+            Select any protein and mutation from the dataset to observe how the 5 representations encode its 3D environment and predict stability.
+          </p>
+        </div>
 
       {/* SELECTORS BAR */}
       <div
@@ -355,6 +404,7 @@ export const ExploreView: React.FC<ExploreViewProps> = ({
           </div>
         </div>
       )}
+      </section>
     </div>
   );
 };

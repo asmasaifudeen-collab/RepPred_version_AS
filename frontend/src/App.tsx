@@ -6,7 +6,6 @@ import { ExploreView } from './components/views/ExploreView';
 import { ResearchView } from './components/views/ResearchView';
 import { BenchmarkView } from './components/views/BenchmarkView';
 import { InterpretabilityView } from './components/views/InterpretabilityView';
-import { DataView } from './components/views/DataView';
 import { InteractiveBackground } from './components/common/InteractiveBackground';
 
 export function App() {
@@ -51,6 +50,11 @@ export function App() {
       });
   }, []);
 
+  // Reset scroll position whenever the user navigates to another section.
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, [activeTab]);
+
   return (
     <div
       style={{
@@ -77,7 +81,7 @@ export function App() {
       {/* Main Page Workspace */}
       <main style={{ flex: 1, padding: presentationMode ? '48px 48px 80px' : '36px 32px 64px', position: 'relative', zIndex: 1 }}>
         {activeTab === 'home' && <HomeView onNavigate={setActiveTab} />}
-        {activeTab === 'explore' && (
+        {(activeTab === 'explore' || activeTab === 'data') && (
           <ExploreView
             mutations={mutations}
             predictionsMap={predictionsMap}
@@ -93,13 +97,14 @@ export function App() {
             featureImportanceData={featureImportanceData}
           />
         )}
-        {activeTab === 'benchmark' && <BenchmarkView comparisonData={benchmarkComparison} />}
+        {activeTab === 'benchmark' && (
+          <BenchmarkView comparisonData={benchmarkComparison} />
+        )}
         {activeTab === 'interpretability' && <InterpretabilityView featureImportanceData={featureImportanceData} />}
-        {activeTab === 'data' && <DataView />}
       </main>
 
       {/* Footer */}
-      {!presentationMode && (
+      {!presentationMode && activeTab !== 'home' && (
         <footer
           style={{
             borderTop: '1px solid #11110F',
