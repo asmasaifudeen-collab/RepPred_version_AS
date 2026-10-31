@@ -1,6 +1,5 @@
 # RepPred — Protein Representation Benchmark
-
-> **RepPred** is a controlled scientific benchmark evaluating how different protein representation paradigms impact mutation-level stability prediction ($\Delta\Delta G$).
+**RepPred** is a machine-learning-based benchmarking tool that evaluates and compares different protein representations for predicting mutation-level effects on protein stability ($\Delta\Delta G$).
 
 ---
 
